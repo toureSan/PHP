@@ -3,40 +3,35 @@
 {% block title %}Hospital index{% endblock %}
 
 {% block body %}
-    <h1>Hospital index</h1>
+    <h1>Liste des Hopitaux </h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Adresse</th>
-                <th>Postal</th>
-                <th>Ville</th>
-                <th>Pays</th>
-                <th>actions</th>
+               
+                <th>Nom Hopital</th>
+  
             </tr>
         </thead>
         <tbody>
         {% for hospital in hospitals %}
             <tr>
-                <td>{{ hospital.id }}</td>
+             
                 <td>{{ hospital.nom }}</td>
-                <td>{{ hospital.adresse }}</td>
-                <td>{{ hospital.postal }}</td>
-                <td>{{ hospital.ville }}</td>
-                <td>{{ hospital.pays }}</td>
+           
                 <td>
                     <a href="{{ path('hospital_show', {'id': hospital.id}) }}">show</a>
-                    <a href="{{ path('hospital_edit', {'id': hospital.id}) }}">edit</a>
-                    <a href="{{ path('hospital_delete', {'id': hospital.id}) }}">delete</a>
+
                 </td>
             </tr>
+            
         {% else %}
             <tr>
                 <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
+
+        
         </tbody>
     </table>
 

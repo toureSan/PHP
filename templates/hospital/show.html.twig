@@ -7,39 +7,24 @@
 
     <table class="table">
         <tbody>
+         
             <tr>
-                <th>Id</th>
-                <td>{{ hospital.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
+                <th>Nom Hopital</th>
                 <td>{{ hospital.nom }}</td>
             </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ hospital.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Postal</th>
-                <td>{{ hospital.postal }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ hospital.ville }}</td>
-            </tr>
-            <tr>
-                <th>Pays</th>
-                <td>{{ hospital.pays }}</td>
-            </tr>
+         
             </br>
             </br>
             
-            <th>Chambres</th>
+            <th>Nombre de chambe dans cette hopital : </th>
+            <br>
             <td>
+            <br>
                 {% for chambre in hospital.chambre %}
-                {{chambre}}
+                {{chambre.nom}}
                 {% for admission in chambre.admissions %}
-                {{admission}} <a href="{{ path('patient_edit', {'id':admission.patient.id}) }}">edit</a>
+                {{admission.date_debut| date('d.m.y')}}<br>
+                {{admission.date_fin}}
                 {% endfor %}
                 <br>
                 {% endfor %}
@@ -47,7 +32,8 @@
         </tbody>
     </table>
 
-    <a href="{{ path('hospital_index') }}">back to list</a>
+    <a href="{{ path('hospital_index') }}">retour </a>
+ <a href="{{ path('hospital_edit', {'id': hospital.id}) }}">edit </a>
 
     {{ include('hospital/_delete_form.html.twig') }}
 {% endblock %}

@@ -13,8 +13,7 @@ class ChambreType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('capacite')
-            ->add('hospital')
+       
         ;
     }
 

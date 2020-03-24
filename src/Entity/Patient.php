@@ -43,6 +43,12 @@ class Patient
      */
     private $birthdate;
 
+    public function __toString(){
+        return $this->getNom() . $this->getPrenom();
+
+        
+       
+    }
     public function __construct()
     {
         $this->admissions = new ArrayCollection();

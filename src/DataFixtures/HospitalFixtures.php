@@ -14,11 +14,11 @@ class HospitalFixtures extends Fixture
         // $manager->persist($product);
         $names = [
 
-            [ 'hopital la tour', "254 routes des fayards", "129v","Versoix", "Suisse"],
-            [ 'hopital tour', "254 routes des fayards", "19v","Br", "Bruxelle"],
-            [ 'hopital mirandoline', "254 routes des Riandole", "129v","Geneve", "Suisse"],
-            [ 'hopital Lausanne', "254 routes des Lausanne", "29v","Geneve", "Suisse"],
-            [ 'hopital Zurich', "254 routes de Zurich", "9v","Geneve", "Suisse"],
+            [ 'hopital la tour', "254 routes des fayards", "vd","Versoix", "Suisse"],
+            [ 'hopital tour', "254 routes des fayards", "fv", "Bruxelle", "Belgique"],
+            [ 'hopital mirandoline', "254 routes des Riandole", "ve","Geneve", "Suisse"],
+            [ 'hopital Lausanne', "254 routes des Lausanne", "vf","Geneve", "Suisse"],
+            [ 'hopital Zurich', "254 routes de Zurich", "df","Geneve", "Suisse"],
         ];
 
         foreach ($names as $name){
@@ -29,7 +29,7 @@ class HospitalFixtures extends Fixture
                 ->setAdresse($name[1])
                 ->setPostal($name[2])
                 ->setVille($name[3])
-                ->setPostal($name[4])
+                ->setPays($name[4])
                 ; 
                 $manager->persist($hospital); 
 

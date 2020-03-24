@@ -27,6 +27,7 @@
                 <td>
                     <a href="{{ path('patient_show', {'id': patient.id}) }}">show</a>
                     <a href="{{ path('patient_edit', {'id': patient.id}) }}">edit</a>
+                               <a href="{{ path('patient_delete', {'id': patient.id}) }}">delete</a>
                 </td>
             </tr>
         {% else %}

@@ -48,7 +48,7 @@ class Hospital
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Chambre", mappedBy="hospital")
      */
-    private $chambre;
+    private $chambres;
 
     public function __toString(){
         return $this->getNom();
@@ -57,7 +57,7 @@ class Hospital
 
     public function __construct()
     {
-        $this->chambre = new ArrayCollection();
+        $this->chambres = new ArrayCollection();
 
     }
 
@@ -129,15 +129,15 @@ class Hospital
     /**
      * @return Collection|Chambre[]
      */
-    public function getChambre(): Collection
+    public function getChambres(): Collection
     {
-        return $this->chambre;
+        return $this->chambres;
     }
 
     public function addChambre(Chambre $chambre): self
     {
-        if (!$this->chambre->contains($chambre)) {
-            $this->chambre[] = $chambre;
+        if (!$this->chambres->contains($chambre)) {
+            $this->chambres[] = $chambre;
             $chambre->setHospital($this);
         }
 
@@ -146,8 +146,8 @@ class Hospital
 
     public function removeChambre(Chambre $chambre): self
     {
-        if ($this->chambre->contains($chambre)) {
-            $this->chambre->removeElement($chambre);
+        if ($this->chambres->contains($chambre)) {
+            $this->chambres->removeElement($chambre);
             // set the owning side to null (unless already changed)
             if ($chambre->getHospital() === $this) {
                 $chambre->setHospital(null);

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Hospital;
 use App\Form\HospitalType;
 use App\Repository\HospitalRepository;
+use App\Repository\ChambreRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,17 +52,19 @@ class HospitalController extends AbstractController
     /**
      * @Route("/{id}", name="hospital_show", methods={"GET"})
      */
-    public function show(Hospital $hospital): Response
+    public function show(Hospital $hospital, ChambreRepository $chambreRepository): Response
     {
         return $this->render('hospital/show.html.twig', [
             'hospital' => $hospital,
+            'chambres'=> $chambreRepository->findAll($hospital),
+
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="hospital_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Hospital $hospital): Response
+    public function edit(Request $request, Hospital $hospital, ChambreRepository $chambreRepository): Response
     {
         $form = $this->createForm(HospitalType::class, $hospital);
         $form->handleRequest($request);
@@ -75,6 +78,7 @@ class HospitalController extends AbstractController
         return $this->render('hospital/edit.html.twig', [
             'hospital' => $hospital,
             'form' => $form->createView(),
+            'chambres'=> $chambreRepository->findAll($hospital),
         ]);
     }
 

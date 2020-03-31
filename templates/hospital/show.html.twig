@@ -7,33 +7,57 @@
 
     <table class="table">
         <tbody>
-         
+          <tr>
+                <th>Id Hospital</th>
+                <td>{{ hospital.id }}</td>
+            </tr>
+
             <tr>
                 <th>Nom Hopital</th>
                 <td>{{ hospital.nom }}</td>
             </tr>
+             <tr>
+                <th>Adresse Hopital</th>
+                <td>{{ hospital.adresse }}</td>
+            </tr>
+                <tr>
+                <th>Code postal</th>
+                <td>{{ hospital.postal }}</td>
+            </tr>
+                <tr>
+                <th>ville de Hopital</th>
+                <td>{{ hospital.ville }}</td>
+            </tr>
+                <tr>
+                <th>Pays de Hopital</th>
+                <td>{{ hospital.pays }}</td>
+            </tr>
          
-            </br>
-            </br>
+       
+            <th>Liste des chambres : </th>
             
-            <th>Nombre de chambe dans cette hopital : </th>
-            <br>
-            <td>
-            <br>
-                {% for chambre in hospital.chambre %}
-                {{chambre.nom}}
-                {% for admission in chambre.admissions %}
-                {{admission.date_debut| date('d.m.y')}}<br>
-                {{admission.date_fin}}
-                {% endfor %}
-                <br>
-                {% endfor %}
-            </td>
+         <tr>
+                {% for chambre in hospital.chambres  %}
+              <td>  {{chambre.nom}}</td>
+   
+            </tr>
+               
+              
+              
+              <tr>  
+               {% for admission in chambre.admissions %}
+               <th>Admission date d'entrée : </th>
+               <td>  {{admission.dateDebut|date('d.m.y')}}</td> 
+             <a href="{{ path('patient_show', {'id': admission.patient.id}) }}">Information suplémentaires sur le patient   </a>
+
+              </tr> 
+    
+           
         </tbody>
     </table>
-
+     {% endfor %}
     <a href="{{ path('hospital_index') }}">retour </a>
- <a href="{{ path('hospital_edit', {'id': hospital.id}) }}">edit </a>
-
-    {{ include('hospital/_delete_form.html.twig') }}
+ <a href="{{ path('hospital_edit', {'id': hospital.id}) }}">Edition de l'hopital    </a>
+   
+    
 {% endblock %}

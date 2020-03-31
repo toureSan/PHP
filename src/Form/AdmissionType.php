@@ -12,9 +12,9 @@ class AdmissionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateDebut')
-            ->add('dateFin')
-            ->add('patient')
+            // ->add('dateDebut')
+            // ->add('dateFin')
+            // ->add('patient')
             ->add('chambre')
         ;
     }

@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Admission;
 use App\Form\AdmissionType;
+use App\Entity\Patient;
+use App\Entity\Admission;
+
 use App\Repository\AdmissionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,6 +25,8 @@ class AdmissionController extends AbstractController
         return $this->render('admission/index.html.twig', [
             'admissions' => $admissionRepository->findAll(),
         ]);
+
+
     }
 
     /**
@@ -44,7 +48,7 @@ class AdmissionController extends AbstractController
 
         return $this->render('admission/new.html.twig', [
             'admission' => $admission,
-            'form' => $form->createView(),
+            'createAdmission' => $form->createView(),
         ]);
     }
 

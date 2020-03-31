@@ -22,7 +22,8 @@ class Admission
     private $dateDebut;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
+     * 
      */
     private $dateFin;
 
@@ -38,6 +39,11 @@ class Admission
      */
     private $chambre;
 
+    public function __construct()
+    {
+        $this->setDateDebut = (new \DateTime('now'));
+    }
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -63,6 +69,7 @@ class Admission
     public function setDateFin(\DateTimeInterface $dateFin): self
     {
         $this->dateFin = $dateFin;
+
 
         return $this;
     }

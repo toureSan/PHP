@@ -21,8 +21,7 @@
                 <td>{{ admission.dateDebut ? admission.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ admission.dateFin ? admission.dateFin|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('admission_show', {'id': admission.id}) }}">show</a>
-                    <a href="{{ path('admission_edit', {'id': admission.id}) }}">edit</a>
+                    
                 </td>
             </tr>
         {% else %}

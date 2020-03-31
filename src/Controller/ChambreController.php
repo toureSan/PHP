@@ -57,6 +57,7 @@ class ChambreController extends AbstractController
             'chambre' => $chambre,
         ]);
     }
+ 
 
     /**
      * @Route("/{id}/edit", name="chambre_edit", methods={"GET","POST"})
